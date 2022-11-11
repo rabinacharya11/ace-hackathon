@@ -138,6 +138,7 @@ FutureBuilder<List<FoodModel>> fetchData() {
                                       Text("${items[i].title}",
                                           overflow: TextOverflow.ellipsis,
                                           style: const TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w400)),
+                                      const SizedBox(width: 10),
                                       const SizedBox(width: 10, height: 5),
                                       Text("Contact Info. ${items[i].contact}",
                                           style: const TextStyle(
