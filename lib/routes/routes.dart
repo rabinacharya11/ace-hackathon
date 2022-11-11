@@ -17,7 +17,8 @@ Route routes(RouteSettings settings) {
     case RouteConstant.homeScreen:
       return FadeInRoute(page: const HomeScreen());
     case RouteConstant.deliverScreen:
-      return FadeInRoute(page: const DeliverScreen());
+      final args = arguments as Map<String, dynamic>?;
+      return FadeInRoute(page: DeliverScreen(data: args!["data"]));
     case RouteConstant.clothDetail:
       final args = arguments as Map<String, dynamic>?;
       return FadeInRoute(page: ViewCloth(cloth: args!["cloth"]));
