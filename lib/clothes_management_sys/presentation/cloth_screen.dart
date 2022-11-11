@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:waste_manage_sys/clothes_management_sys/application/cloth_service.dart';
 import 'package:waste_manage_sys/routes/routes_constant.dart';
+import 'package:waste_manage_sys/sidemenu/sidemenu.dart';
+import 'package:waste_manage_sys/theme/theme_data.dart';
+import 'package:waste_manage_sys/widget/appbar.dart';
 
 class ClothScreen extends StatefulWidget {
   const ClothScreen({super.key});
@@ -13,37 +16,8 @@ class _ClothScreenState extends State<ClothScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(
-        child: Column(
-          children: [
-            // Header
-            drawerHeader(context),
-            const SizedBox(height: 10),
-            drawerBody(context),
-            const Spacer(),
-            const Divider(thickness: 0.8),
-            listTile(context: context, text: "Version 1.0.0", onClick: () {})
-          ],
-        ),
-      ),
-      appBar: AppBar(
-        iconTheme: const IconThemeData(color: Colors.black),
-        // leading: const Icon(
-        //   Icons.menu,
-        //   color: Colors.black,
-        // ),
-        title:
-            const Text("Clothes Page", style: TextStyle(color: Colors.black)),
-        backgroundColor: Colors.white,
-        elevation: 0,
-        actions: const [
-          Icon(
-            Icons.search,
-            color: Colors.black,
-          ),
-          SizedBox(width: 20),
-        ],
-      ),
+      drawer: const SideMenu(),
+      appBar: appBar("Clothes Page"),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         backgroundColor: Colors.green,
@@ -107,150 +81,6 @@ class _ClothScreenState extends State<ClothScreen> {
       ],
     );
   }
-}
-
-Widget drawerBody(BuildContext context) {
-  // var loc = AppLocalizations.of(context)!;
-  return MediaQuery.removePadding(
-    context: context,
-    removeTop: true,
-    child: ListView(
-      shrinkWrap: true,
-      children: [
-        listTile(
-            context: context,
-            icon: Icons.home,
-            text: "Home",
-            onClick: () {
-              Navigator.pop(context);
-              Navigator.of(context).pushNamed('/cvt');
-            }),
-        listTile(
-            context: context,
-            icon: Icons.person,
-            text: "Profile",
-            onClick: () {
-              Navigator.pop(context);
-            }),
-
-        const Divider(thickness: 0.8),
-
-        listTile(
-            context: context,
-            icon: Icons.edit_note,
-            text: "Clothes",
-            onClick: () {
-              Navigator.pop(context);
-              Navigator.of(context).pushNamed('/of');
-            }),
-
-        listTile(
-            context: context,
-            icon: Icons.fact_check_outlined,
-            text: "Food",
-            onClick: () {
-              Navigator.pop(context);
-              Navigator.of(context).pushNamed('/lps');
-            }),
-
-        const Divider(thickness: 0.8),
-
-        listTile(
-            context: context,
-            icon: Icons.settings_outlined,
-            text: "Settings",
-            onClick: () {
-              Navigator.pop(context);
-              Navigator.of(context).pushNamed('/settings');
-            }),
-
-        // Share App
-        listTile(
-          context: context,
-          icon: Icons.share_outlined,
-          text: "Share",
-          onClick: () async {
-            Navigator.pop(context);
-            // await Share.share(
-            //     'https://play.google.com/store/apps/details?id=com.subarnainfotech.nepal_driving_license_app');
-          },
-        ),
-
-        // Rate Us
-        listTile(
-          context: context,
-          icon: Icons.star_border_outlined,
-          text: "Rate Us",
-          onClick: () async {
-            Navigator.pop(context);
-            // await RateMyApp().launchStore();
-          },
-        ),
-
-        // Exit
-        listTile(
-          context: context,
-          icon: Icons.exit_to_app,
-          text: "Log Out",
-          onClick: () async {
-            Navigator.pop(context);
-            // exitAppConfirmation(context);
-          },
-        ),
-      ],
-    ),
-  );
-}
-
-ListTile listTile(
-    {required BuildContext context,
-    IconData? icon,
-    required String text,
-    required Function()? onClick}) {
-  return ListTile(
-      visualDensity: const VisualDensity(horizontal: 0, vertical: -3),
-      contentPadding: const EdgeInsets.symmetric(horizontal: 15),
-      minLeadingWidth: 20,
-      leading: icon != null
-          ? Icon(
-              icon,
-              color: Theme.of(context).textTheme.displayMedium!.color,
-            )
-          : null,
-      title: Text(text, style: const TextStyle(fontSize: 15)),
-      onTap: onClick);
-}
-
-class CircleOne extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    canvas.drawCircle(
-        const Offset(28, 0),
-        99,
-        Paint()
-          ..color = Colors.white24
-          ..strokeWidth = 10
-          ..style = PaintingStyle.fill);
-  }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) => false;
-}
-
-class CircleTwo extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    canvas.drawCircle(
-        const Offset(-30, 20),
-        50,
-        Paint()
-          ..color = Colors.white24
-          ..strokeWidth = 10
-          ..style = PaintingStyle.fill);
-  }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) => false;
 }
 
 FutureBuilder<List<ClothModel>> fetchData() {
@@ -326,9 +156,9 @@ FutureBuilder<List<ClothModel>> fetchData() {
                                               fontWeight: FontWeight.w500)),
                                       const SizedBox(height: 5),
                                       Text("Rs. ${items[i].price.toString()}",
-                                          style: const TextStyle(
+                                          style: TextStyle(
                                               fontSize: 18,
-                                              color: Colors.orange,
+                                              color: kPrimaryColor,
                                               fontWeight: FontWeight.w500)),
                                     ],
                                   ),

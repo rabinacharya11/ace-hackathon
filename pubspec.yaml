@@ -56,6 +56,7 @@ flutter:
   assets:
     - assets/images/
     - lib/clothes_management_sys/domain/cloth_data.json
+    - lib/food_management_sys/domain/food_data.json
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see

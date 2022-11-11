@@ -1,0 +1,35 @@
+[
+    {
+        "image_link" :"https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Nepali_dal-bhat-tarkari.jpg/300px-Nepali_dal-bhat-tarkari.jpg",
+        "contact":9800000000,
+        "price" : 500,
+        "title" : "Khana Set",
+        "descrption" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ullamcorper velit sed ullamcorper morbi tincidunt. Nisl tincidunt eget nullam non nisi est sit. Nunc aliquet bibendum enim facilisis gravida neque convallis a cras. Integer eget aliquet nibh praesent tristique magna. Phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec. Id interdum velit laoreet id. Ligula ullamcorper malesuada proin libero nunc consequat interdum varius sit. Eros donec ac odio tempor orci dapibus. Suspendisse interdum consectetur libero id. Aliquet bibendum enim facilisis gravida neque convallis a cras."
+    },
+    {
+        "image_link" : "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Momo101.jpg/300px-Momo101.jpg",
+        "contact":9800000000,
+        "title" : "Momo",
+
+        "price" : 150,
+        "descrption" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ullamcorper velit sed ullamcorper morbi tincidunt. Nisl tincidunt eget nullam non nisi est sit. Nunc aliquet bibendum enim facilisis gravida neque convallis a cras. Integer eget aliquet nibh praesent tristique magna. Phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec. Id interdum velit laoreet id. Ligula ullamcorper malesuada proin libero nunc consequat interdum varius sit. Eros donec ac odio tempor orci dapibus. Suspendisse interdum consectetur libero id. Aliquet bibendum enim facilisis gravida neque convallis a cras."
+    }
+    ,
+    {
+        "image_link" : "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Chicken_Chow_Mein.JPG/330px-Chicken_Chow_Mein.JPG",
+        "contact":9800000000,
+        "title" : "Hot Chicken",
+
+        "price" : 250,
+        "descrption" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ullamcorper velit sed ullamcorper morbi tincidunt. Nisl tincidunt eget nullam non nisi est sit. Nunc aliquet bibendum enim facilisis gravida neque convallis a cras. Integer eget aliquet nibh praesent tristique magna. Phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec. Id interdum velit laoreet id. Ligula ullamcorper malesuada proin libero nunc consequat interdum varius sit. Eros donec ac odio tempor orci dapibus. Suspendisse interdum consectetur libero id. Aliquet bibendum enim facilisis gravida neque convallis a cras."
+    }
+    ,
+    {
+        "image_link" : "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Dhindo_by_Ganesh.jpeg/300px-Dhindo_by_Ganesh.jpeg",
+        "contact":9800000000,
+        "title" : "Khas cuisine",
+
+        "price" : 250,
+        "descrption" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ullamcorper velit sed ullamcorper morbi tincidunt. Nisl tincidunt eget nullam non nisi est sit. Nunc aliquet bibendum enim facilisis gravida neque convallis a cras. Integer eget aliquet nibh praesent tristique magna. Phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec. Id interdum velit laoreet id. Ligula ullamcorper malesuada proin libero nunc consequat interdum varius sit. Eros donec ac odio tempor orci dapibus. Suspendisse interdum consectetur libero id. Aliquet bibendum enim facilisis gravida neque convallis a cras."
+    }
+]

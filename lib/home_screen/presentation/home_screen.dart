@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:waste_manage_sys/dialogs/exit_dialog.dart';
 import 'package:waste_manage_sys/clothes_management_sys/presentation/cloth_screen.dart';
-import 'package:waste_manage_sys/food_management_sys/presentation/deliver_screen.dart';
 import 'package:waste_manage_sys/food_management_sys/presentation/food_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -59,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 }
               },
               children: const [
-                DeliverScreen(),
+                FoodScreen(),
                 ClothScreen(),
               ],
             ),
