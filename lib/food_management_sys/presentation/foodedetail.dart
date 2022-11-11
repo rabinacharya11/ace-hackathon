@@ -37,6 +37,9 @@ class ViewFood extends StatelessWidget {
                           Text("Rs. ${food.price.toString()}",
                               style: const TextStyle(fontSize: 22, color: Colors.orange, fontWeight: FontWeight.w600)),
                           const SizedBox(height: 20),
+                          const Text("Address", style: TextStyle(fontSize: 22, fontWeight: FontWeight.w300)),
+                          Text(food.address!, style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w400)),
+                          const SizedBox(height: 20),
                           const Text("Product Description", style: TextStyle(fontSize: 22, fontWeight: FontWeight.w300)),
                           Text(food.descrption!, style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w400)),
                           Row(
