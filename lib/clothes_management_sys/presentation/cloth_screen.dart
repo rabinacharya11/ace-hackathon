@@ -32,7 +32,8 @@ class _ClothScreenState extends State<ClothScreen> {
         //   Icons.menu,
         //   color: Colors.black,
         // ),
-        title: const Text("Clothes Page", style: TextStyle(color: Colors.black)),
+        title:
+            const Text("Clothes Page", style: TextStyle(color: Colors.black)),
         backgroundColor: Colors.white,
         elevation: 0,
         actions: const [
@@ -51,7 +52,8 @@ class _ClothScreenState extends State<ClothScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(height: MediaQuery.of(context).size.height, child: fetchData()),
+            SizedBox(
+                height: MediaQuery.of(context).size.height, child: fetchData()),
           ],
         ),
       ),
@@ -200,7 +202,11 @@ Widget drawerBody(BuildContext context) {
   );
 }
 
-ListTile listTile({required BuildContext context, IconData? icon, required String text, required Function()? onClick}) {
+ListTile listTile(
+    {required BuildContext context,
+    IconData? icon,
+    required String text,
+    required Function()? onClick}) {
   return ListTile(
       visualDensity: const VisualDensity(horizontal: 0, vertical: -3),
       contentPadding: const EdgeInsets.symmetric(horizontal: 15),
@@ -247,7 +253,7 @@ class CircleTwo extends CustomPainter {
   bool shouldRepaint(CustomPainter oldDelegate) => false;
 }
 
-FutureBuilder<List<ClothJson>> fetchData() {
+FutureBuilder<List<ClothModel>> fetchData() {
   return FutureBuilder(
       future: ReadJsonData(),
       builder: (context, data) {
@@ -255,7 +261,7 @@ FutureBuilder<List<ClothJson>> fetchData() {
           //in case if error found
           return Center(child: Text("${data.error}"));
         } else if (data.hasData) {
-          var items = data.data as List<ClothJson>;
+          var items = data.data as List<ClothModel>;
           return ListView.builder(
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true, // calling the neverscrollable functio here
@@ -267,11 +273,15 @@ FutureBuilder<List<ClothJson>> fetchData() {
                     height: MediaQuery.of(context).size.height,
                     child: GridView.builder(
                       itemCount: items.length,
-                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, childAspectRatio: 0.7),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2, childAspectRatio: 0.7),
                       itemBuilder: (BuildContext c, int i) {
                         return GestureDetector(
                           onTap: () {
-                            Navigator.pushNamed(context, RouteConstant.clothDetail, arguments: {"cloth": items[i]});
+                            Navigator.pushNamed(
+                                context, RouteConstant.clothDetail,
+                                arguments: {"cloth": items[i]});
                           },
                           child: Card(
                             shape: RoundedRectangleBorder(
@@ -297,19 +307,29 @@ FutureBuilder<List<ClothJson>> fetchData() {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       const SizedBox(width: 10),
-                                      Text("${items[i].name}",
+                                      Text("${items[i].title}",
                                           overflow: TextOverflow.ellipsis,
-                                          style: const TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w400)),
-                                      const SizedBox(width: 10, height: 5),
-                                      Text("Contact Info. ${items[i].number}",
                                           style: const TextStyle(
-                                              fontSize: 14, overflow: TextOverflow.ellipsis, color: Colors.black54, fontWeight: FontWeight.w500)),
+                                              fontSize: 16,
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.w400)),
+                                      const SizedBox(width: 10, height: 5),
+                                      Text("Contact Info. ${items[i].contact}",
+                                          style: const TextStyle(
+                                              fontSize: 14,
+                                              overflow: TextOverflow.ellipsis,
+                                              color: Colors.black54,
+                                              fontWeight: FontWeight.w500)),
                                       const SizedBox(height: 5),
                                       Text("Rs. ${items[i].price.toString()}",
-                                          style: const TextStyle(fontSize: 18, color: Colors.orange, fontWeight: FontWeight.w500)),
+                                          style: const TextStyle(
+                                              fontSize: 18,
+                                              color: Colors.orange,
+                                              fontWeight: FontWeight.w500)),
                                     ],
                                   ),
                                 ),
