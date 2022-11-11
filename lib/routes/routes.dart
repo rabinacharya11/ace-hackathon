@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:waste_manage_sys/home_screen/presentation/home_screen.dart';
+import 'package:waste_manage_sys/home_screen/presentation/splash_screen.dart';
 import 'package:waste_manage_sys/routes/routes_constant.dart';
 import 'package:waste_manage_sys/utils/page_transition.dart';
-import 'package:waste_manage_sys/waste_management_sys/user/presentation/home_screen.dart';
-import 'package:waste_manage_sys/waste_management_sys/user/presentation/splash_screen.dart';
 
 Route routes(RouteSettings settings) {
   switch (settings.name) {
