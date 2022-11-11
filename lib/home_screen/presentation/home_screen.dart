@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:waste_manage_sys/dialogs/exit_dialog.dart';
 import 'package:waste_manage_sys/clothes_management_sys/presentation/cloth_screen.dart';
+import 'package:waste_manage_sys/food_management_sys/presentation/deliver_screen.dart';
 import 'package:waste_manage_sys/food_management_sys/presentation/food_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -46,6 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child: WillPopScope(
         onWillPop: () => showExitPopup(context),
         child: Scaffold(
+          // extendBody: true,
           body: SizedBox.expand(
             child: PageView(
               controller: _pageController,
@@ -57,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 }
               },
               children: const [
-                FoodScreen(),
+                DeliverScreen(),
                 ClothScreen(),
               ],
             ),
@@ -66,23 +68,29 @@ class _HomeScreenState extends State<HomeScreen> {
           // BottomNavBar
           bottomNavigationBar: BottomNavigationBar(
             type: BottomNavigationBarType.fixed,
-            backgroundColor: Colors.grey[100],
+            // backgroundColor: Colors.black.withOpacity(0.2),
             currentIndex: _selectedIndex,
+            showSelectedLabels: true,
+            showUnselectedLabels: true,
             selectedItemColor: Colors.black87,
-            unselectedItemColor: Colors.grey.withOpacity(0.9),
-            showSelectedLabels: false,
-            showUnselectedLabels: false,
-            selectedFontSize: 0,
-            unselectedFontSize: 0,
+            unselectedItemColor: Colors.black,
             elevation: 0,
-            items: const [
+            items: [
               BottomNavigationBarItem(
                 label: "Food",
-                icon: Icon(Icons.food_bank_rounded),
+                icon: Image.asset(
+                  'assets/images/food.png',
+                  height: 32,
+                  width: 32,
+                ),
               ),
               BottomNavigationBarItem(
                 label: "Cloth",
-                icon: Icon(Icons.abc),
+                icon: Image.asset(
+                  'assets/images/cloth.png',
+                  height: 32,
+                  width: 32,
+                ),
               ),
             ],
             onTap: (index) => _onTap(index),
