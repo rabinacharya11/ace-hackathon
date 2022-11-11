@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:waste_manage_sys/food_management_sys/presentation/foodedetail.dart';
 import 'package:waste_manage_sys/deliver_screen/presentation/deliver_screen.dart';
 
 import 'package:waste_manage_sys/home_screen/presentation/home_screen.dart';
@@ -20,6 +21,9 @@ Route routes(RouteSettings settings) {
     case RouteConstant.clothDetail:
       final args = arguments as Map<String, dynamic>?;
       return FadeInRoute(page: ViewCloth(cloth: args!["cloth"]));
+    case RouteConstant.foodDetail:
+      final args = arguments as Map<String, dynamic>?;
+      return FadeInRoute(page: ViewFood(food: args!["food"]));
     default:
       return FadeInRoute(page: const SplashScreen());
   }

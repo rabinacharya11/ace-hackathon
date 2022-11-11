@@ -10,9 +10,9 @@ class FoodModel {
   int? price;
   String? title;
   String? descrption;
+  String? address;
 
-  FoodModel(
-      {this.imageLink, this.contact, this.price, this.title, this.descrption});
+  FoodModel({this.imageLink, this.contact, this.price, this.title, this.descrption, this.address});
 
   FoodModel.fromJson(Map<String, dynamic> json) {
     imageLink = json['image_link'];
@@ -20,23 +20,24 @@ class FoodModel {
     price = json['price'];
     title = json['title'];
     descrption = json['descrption'];
+    address = json['address'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
-    data['image_link'] = this.imageLink;
-    data['contact'] = this.contact;
-    data['price'] = this.price;
-    data['title'] = this.title;
-    data['descrption'] = this.descrption;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['image_link'] = imageLink;
+    data['contact'] = contact;
+    data['price'] = price;
+    data['title'] = title;
+    data['descrption'] = descrption;
+    data['address'] = address;
     return data;
   }
 }
 
 Future<List<FoodModel>> ReadJsonData() async {
   //read json file
-  final jsondata = await rootBundle.rootBundle
-      .loadString("lib/food_management_sys/domain/food_data.json");
+  final jsondata = await rootBundle.rootBundle.loadString("lib/food_management_sys/domain/food_data.json");
   //decode json data as list
   final list = json.decode(jsondata) as List<dynamic>;
 

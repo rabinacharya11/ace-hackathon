@@ -11,8 +11,7 @@ class ClothModel {
   String? title;
   String? descrption;
 
-  ClothModel(
-      {this.imageLink, this.contact, this.price, this.title, this.descrption});
+  ClothModel({this.imageLink, this.contact, this.price, this.title, this.descrption});
 
   ClothModel.fromJson(Map<String, dynamic> json) {
     imageLink = json['image_link'];
@@ -23,20 +22,19 @@ class ClothModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['image_link'] = this.imageLink;
-    data['contact'] = this.contact;
-    data['price'] = this.price;
-    data['title'] = this.title;
-    data['descrption'] = this.descrption;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['image_link'] = imageLink;
+    data['contact'] = contact;
+    data['price'] = price;
+    data['title'] = title;
+    data['descrption'] = descrption;
     return data;
   }
 }
 
 Future<List<ClothModel>> ReadJsonData() async {
   //read json file
-  final jsondata = await rootBundle.rootBundle
-      .loadString("lib/clothes_management_sys/domain/cloth_data.json");
+  final jsondata = await rootBundle.rootBundle.loadString("lib/clothes_management_sys/domain/cloth_data.json");
   //decode json data as list
   final list = json.decode(jsondata) as List<dynamic>;
 
