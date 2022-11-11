@@ -17,7 +17,7 @@ class _FoodScreenState extends State<FoodScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const SideMenu(),
-      appBar: appBar( title : "Food Page"),
+      appBar: appBar(title: "Food Page"),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         backgroundColor: Colors.green,
@@ -26,8 +26,7 @@ class _FoodScreenState extends State<FoodScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            SizedBox(
-                height: MediaQuery.of(context).size.height, child: fetchData()),
+            SizedBox(height: MediaQuery.of(context).size.height, child: fetchData()),
           ],
         ),
       ),
@@ -103,15 +102,11 @@ FutureBuilder<List<FoodModel>> fetchData() {
                     height: MediaQuery.of(context).size.height,
                     child: GridView.builder(
                       itemCount: items.length,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2, childAspectRatio: 0.7),
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2, childAspectRatio: 0.7),
                       itemBuilder: (BuildContext c, int i) {
                         return GestureDetector(
                           onTap: () {
-                            Navigator.pushNamed(
-                                context, RouteConstant.clothDetail,
-                                arguments: {"cloth": items[i]});
+                            Navigator.pushNamed(context, RouteConstant.foodDetail, arguments: {"food": items[i]});
                           },
                           child: Card(
                             shape: RoundedRectangleBorder(
@@ -137,29 +132,19 @@ FutureBuilder<List<FoodModel>> fetchData() {
                                 Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       const SizedBox(width: 10),
                                       Text("${items[i].title}",
                                           overflow: TextOverflow.ellipsis,
-                                          style: const TextStyle(
-                                              fontSize: 16,
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.w400)),
+                                          style: const TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w400)),
                                       const SizedBox(width: 10, height: 5),
                                       Text("Contact Info. ${items[i].contact}",
                                           style: const TextStyle(
-                                              fontSize: 14,
-                                              overflow: TextOverflow.ellipsis,
-                                              color: Colors.black54,
-                                              fontWeight: FontWeight.w500)),
+                                              fontSize: 14, overflow: TextOverflow.ellipsis, color: Colors.black54, fontWeight: FontWeight.w500)),
                                       const SizedBox(height: 5),
                                       Text("Rs. ${items[i].price.toString()}",
-                                          style: TextStyle(
-                                              fontSize: 18,
-                                              color: kPrimaryColor,
-                                              fontWeight: FontWeight.w500)),
+                                          style: TextStyle(fontSize: 18, color: kPrimaryColor, fontWeight: FontWeight.w500)),
                                     ],
                                   ),
                                 ),
