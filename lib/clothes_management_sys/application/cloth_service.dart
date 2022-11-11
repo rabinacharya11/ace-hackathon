@@ -33,10 +33,10 @@ class ClothModel {
   }
 }
 
-
 Future<List<ClothModel>> ReadJsonData() async {
   //read json file
-  final jsondata = await rootBundle.rootBundle.loadString("lib/clothes_management_sys/domain/cloth_data.json");
+  final jsondata = await rootBundle.rootBundle
+      .loadString("lib/clothes_management_sys/domain/cloth_data.json");
   //decode json data as list
   final list = json.decode(jsondata) as List<dynamic>;
 

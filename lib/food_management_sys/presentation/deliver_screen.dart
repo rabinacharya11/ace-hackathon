@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:waste_manage_sys/theme/theme_data.dart';
+import 'package:waste_manage_sys/widget/appbar.dart';
 
 class DeliverScreen extends StatelessWidget {
   const DeliverScreen({super.key});
@@ -14,20 +15,7 @@ class DeliverScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        iconTheme: const IconThemeData(color: Colors.black),
-        title:
-            const Text("Clothes Page", style: TextStyle(color: Colors.black)),
-        backgroundColor: Colors.grey[50],
-        elevation: 1,
-        actions: const [
-          Icon(
-            Icons.search,
-            color: Colors.black,
-          ),
-          SizedBox(width: 20),
-        ],
-      ),
+      appBar: appBar("Deliver Screen"),
       backgroundColor: Colors.grey[200],
       body: Column(
         children: [
