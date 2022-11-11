@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:waste_manage_sys/clothes_management_sys/presentation/viewcloth.dart';
+
 import 'package:waste_manage_sys/home_screen/presentation/home_screen.dart';
 import 'package:waste_manage_sys/home_screen/presentation/splash_screen.dart';
 import 'package:waste_manage_sys/routes/routes_constant.dart';
 import 'package:waste_manage_sys/utils/page_transition.dart';
+
+import '../clothes_management_sys/presentation/cloth_detail.dart';
 
 Route routes(RouteSettings settings) {
   final arguments = settings.arguments;

@@ -15,7 +15,7 @@ class DeliverScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar("Deliver Screen"),
+      appBar: appBar( title:  "Deliver Screen"),
       backgroundColor: Colors.grey[200],
       body: Column(
         children: [

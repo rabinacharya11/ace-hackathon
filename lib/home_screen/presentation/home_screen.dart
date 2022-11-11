@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:waste_manage_sys/dialogs/exit_dialog.dart';
-import 'package:waste_manage_sys/clothes_management_sys/presentation/cloth_screen.dart';
+
 import 'package:waste_manage_sys/food_management_sys/presentation/food_screen.dart';
+
+import '../../clothes_management_sys/presentation/cloth_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);

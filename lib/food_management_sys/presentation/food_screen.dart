@@ -17,7 +17,7 @@ class _FoodScreenState extends State<FoodScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const SideMenu(),
-      appBar: appBar("Food Page"),
+      appBar: appBar( title : "Food Page"),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         backgroundColor: Colors.green,

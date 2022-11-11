@@ -17,7 +17,7 @@ class _ClothScreenState extends State<ClothScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const SideMenu(),
-      appBar: appBar("Clothes Page"),
+      appBar: appBar( title : "Clothes Page"),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         backgroundColor: Colors.green,
