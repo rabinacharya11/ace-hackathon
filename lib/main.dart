@@ -2,11 +2,9 @@
 // import 'package:firebase_core/firebase_core.dart';
 // import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:waste_manage_sys/network/internet_provider.dart';
 import 'package:waste_manage_sys/routes/routes.dart';
-import 'package:waste_manage_sys/theme/theme_data.dart';
 
 // import 'firebase_options.dart';
 
@@ -29,8 +27,7 @@ Future main() async {
   //   DeviceOrientation.portraitDown,
   // ]);
 
-  SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(statusBarColor: kStatusBarColor));
+  // SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(statusBarColor: kStatusBarColor));
 
   runApp(const MyApp());
 }
