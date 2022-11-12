@@ -2,9 +2,11 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
+import 'package:waste_manage_sys/clothes_management_sys/application/cloth_provider.dart';
+import 'package:waste_manage_sys/clothes_management_sys/application/cloth_service.dart';
 import 'package:waste_manage_sys/routes/routes_constant.dart';
 import 'package:waste_manage_sys/theme/theme_data.dart';
-import 'package:waste_manage_sys/theme/uiparameters.dart';
 
 class AddItemsScreen extends StatefulWidget {
   const AddItemsScreen({super.key});
@@ -14,12 +16,19 @@ class AddItemsScreen extends StatefulWidget {
 }
 
 class _AddItemsScreenState extends State<AddItemsScreen> {
-  final TextEditingController _myController = TextEditingController();
+  final TextEditingController _priceController = TextEditingController();
+  final String _imageUrl =
+      "https://pbx2-pbww-prod-pbww-cdn.getprintbox.com/media/productimage/e925de22-44e0-4276-bb92-0b4101f5f834/Blank%20Jacket_thumb_900x900";
+  final String _address = "New Baneshwor, KTM";
+  final TextEditingController _titleController = TextEditingController();
+  final TextEditingController _descriptionController = TextEditingController();
+  final TextEditingController _sizeController = TextEditingController();
+  final TextEditingController _contactController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    _myController.text = '0';
+    _priceController.text = '0';
   }
 
   List<String> ngos = [
@@ -126,31 +135,35 @@ class _AddItemsScreenState extends State<AddItemsScreen> {
                                               ),
                                             ],
                                           )
-                                        : Column(
-                                            children: [
-                                              const SizedBox(height: 15),
-                                              Card(
-                                                  color: Colors.grey[300],
-                                                  child: IconButton(
-                                                      onPressed: () {
-                                                        _showPicker(context);
-                                                      },
-                                                      icon: const Icon(
-                                                          Icons.add))),
-                                              const SizedBox(height: 5),
-                                              Text(
-                                                "Add Image",
-                                                style: TextStyle(
-                                                  color: Colors.grey[600],
-                                                ),
-                                              )
-                                            ],
+                                        : Container(
+                                            width: 80,
+                                            height: 80,
+                                            child: Column(
+                                              children: [
+                                                Card(
+                                                    color: Colors.grey[300],
+                                                    child: IconButton(
+                                                        onPressed: () {
+                                                          _showPicker(context);
+                                                        },
+                                                        icon: const Icon(
+                                                            Icons.add))),
+                                                const SizedBox(height: 5),
+                                                Text(
+                                                  "Add Image",
+                                                  style: TextStyle(
+                                                    color: Colors.grey[600],
+                                                  ),
+                                                )
+                                              ],
+                                            ),
                                           ),
                                     const SizedBox(width: 20),
                                     SizedBox(
                                       width: MediaQuery.of(context).size.width -
-                                          112,
+                                          120,
                                       child: TextFormField(
+                                        controller: _titleController,
                                         decoration: const InputDecoration(
                                           label: Text("Add your product name"),
                                           labelStyle: TextStyle(fontSize: 15),
@@ -165,20 +178,67 @@ class _AddItemsScreenState extends State<AddItemsScreen> {
                                   ],
                                 ),
                                 const SizedBox(height: 18),
-                                SizedBox(
-                                  width: MediaQuery.of(context).size.width - 28,
-                                  child: TextFormField(
-                                    maxLines: 3,
-                                    decoration: const InputDecoration(
-                                      label:
-                                          Text("Add your product description"),
-                                      labelStyle: TextStyle(fontSize: 15),
-                                      border: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                            color: Colors.black, width: 5.0),
+                                Row(
+                                  children: [
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width -
+                                          28,
+                                      child: TextFormField(
+                                        maxLines: 3,
+                                        controller: _descriptionController,
+                                        decoration: const InputDecoration(
+                                          label: Text(
+                                              "Add your product description"),
+                                          labelStyle: TextStyle(fontSize: 15),
+                                          border: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                                color: Colors.black,
+                                                width: 5.0),
+                                          ),
+                                        ),
                                       ),
                                     ),
-                                  ),
+                                  ],
+                                ),
+                                const SizedBox(height: 18),
+                                Row(
+                                  children: [
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width /
+                                              2 -
+                                          16,
+                                      child: TextFormField(
+                                        controller: _contactController,
+                                        decoration: const InputDecoration(
+                                          label: Text("Phone No."),
+                                          labelStyle: TextStyle(fontSize: 15),
+                                          border: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                                color: Colors.black,
+                                                width: 5.0),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(width: 10),
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width /
+                                              2 -
+                                          16,
+                                      child: TextFormField(
+                                        controller: _sizeController,
+                                        decoration: const InputDecoration(
+                                          label: Text("Size"),
+                                          labelStyle: TextStyle(fontSize: 15),
+                                          border: OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                                color: Colors.black,
+                                                width: 5.0),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
@@ -349,7 +409,7 @@ class _AddItemsScreenState extends State<AddItemsScreen> {
                             width: 60,
                             height: 30,
                             child: TextFormField(
-                              controller: _myController,
+                              controller: _priceController,
                               autofocus: true,
                               decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
@@ -363,7 +423,7 @@ class _AddItemsScreenState extends State<AddItemsScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           const Text('FoodRobe Commission'),
-                          Text('Rs.${int.parse(_myController.text) * 0.2}'),
+                          Text('Rs.${int.parse(_priceController.text) * 0.2}'),
                         ],
                       ),
                       const SizedBox(height: 10),
@@ -374,7 +434,7 @@ class _AddItemsScreenState extends State<AddItemsScreen> {
                         children: [
                           const Text('You will get'),
                           Text(
-                              'Rs.${int.parse(_myController.text) - int.parse(_myController.text) * 0.2}'),
+                              'Rs.${int.parse(_priceController.text) - int.parse(_priceController.text) * 0.2}'),
                         ],
                       ),
                     ],
@@ -431,6 +491,16 @@ class _AddItemsScreenState extends State<AddItemsScreen> {
                         content: Text('Item Placed'),
                         duration: Duration(milliseconds: 1500),
                       ));
+                      context.read<ClothPageProvider>().updateCMS(ClothModel(
+                            id: 10,
+                            size: _sizeController.text,
+                            imageLink: _imageUrl,
+                            address: _address,
+                            contact: int.parse(_contactController.text),
+                            descrption: _descriptionController.text,
+                            price: int.parse(_priceController.text),
+                            title: _titleController.text,
+                          ));
                       await Future.delayed(const Duration(milliseconds: 2500));
                       Navigator.of(context)
                           .pushReplacementNamed(RouteConstant.homeScreen);
