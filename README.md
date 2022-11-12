@@ -3,9 +3,13 @@ What is the FoodRobe?
 
 FoodRobe is the marketplace that connects users who are looking for leftover food, vegetables, and fruits at cheaper prices, and second-hand clothes. 
 
-A new Flutter project.
 
-## Getting Started
+
+## Technical Details
+
+
+# Product Type :  Mobile Application
+# Technology Used : Flutter, Json
 
 This project is a starting point for a Flutter application.
 
