@@ -5,4 +5,6 @@ class RouteConstant {
   static const deliverScreen = '/deliverScreen';
   static const foodDetail = '/fooddetail';
   static const addItems = '/addItems';
+  static const login = '/login';
+  static const createuser = '/register';
 }
