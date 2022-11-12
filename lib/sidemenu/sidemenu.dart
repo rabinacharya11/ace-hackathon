@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:waste_manage_sys/routes/routes_constant.dart';
 import 'package:waste_manage_sys/theme/theme_data.dart';
 import 'package:waste_manage_sys/theme/uiparameters.dart';
 
@@ -40,26 +41,11 @@ class _SideMenuState extends State<SideMenu> {
         children: [
           listTile(
               context: context,
-              img: const ImageIcon(
-                AssetImage("assets/images/food.png"),
-                size: 28,
-              ),
-              text: "Clothes",
+              icon: Icons.shopping_cart_sharp,
+              text: "My Orders",
               onClick: () {
-                Navigator.pop(context);
-                Navigator.of(context).pushNamed('/of');
-              }),
-
-          listTile(
-              context: context,
-              img: const ImageIcon(
-                AssetImage("assets/images/cloth.png"),
-                size: 28,
-              ),
-              text: "Food",
-              onClick: () {
-                Navigator.pop(context);
-                Navigator.of(context).pushNamed('/lps');
+                Navigator.of(context).pop();
+                Navigator.of(context).pushNamed(RouteConstant.orderScreen);
               }),
 
           const Divider(thickness: 0.8),
