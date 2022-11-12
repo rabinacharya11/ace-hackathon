@@ -3,6 +3,7 @@
 // import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:waste_manage_sys/network/internet_provider.dart';
 import 'package:waste_manage_sys/routes/routes.dart';
@@ -55,7 +56,12 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Waste Management App',
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(primaryColor: kPrimaryColor),
+        theme: ThemeData(
+          primaryColor: kPrimaryColor,
+          textTheme: GoogleFonts.nunitoTextTheme(
+            Theme.of(context).textTheme,
+          ),
+        ),
         onGenerateRoute: routes,
         initialRoute: '/',
       ),
