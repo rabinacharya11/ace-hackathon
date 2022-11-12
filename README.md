@@ -20,4 +20,18 @@ Packages Used :
 5. image_picker :  This package is used  for choosing and uploading image in the app
 6. provider :  This package is used for the state management side of the app
 7. shared_prefrences : This package is used for local/device storage or local database
-8. toast:  This package is used to display in app messages in the app
+8. toast:  This package is used to display in app messages in the app 
+
+
+# Product Overall Detail
+
+## What is our motto ? 
+
+Our motto is to reduce the waste production, and contribute in the waste management. 
+
+Our Tagline " Others See Waste as Trash, We See Trash as Wealth" 
+
+
+
+
+
