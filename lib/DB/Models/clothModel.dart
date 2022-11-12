@@ -14,6 +14,7 @@
 // }
 
 class Cloth {
+  final int id;
   final String title;
   final double price;
   final String contactNo;
@@ -21,13 +22,15 @@ class Cloth {
   final String imgUrl;
 
   Cloth(
-      {required this.title,
+      {required this.id,
+      required this.title,
       required this.price,
       required this.contactNo,
       this.description,
       required this.imgUrl});
 
   factory Cloth.fromJson(Map<String, dynamic> json) => Cloth(
+      id: json['id'],
       title: json['title'],
       price: json['price'],
       contactNo: json['contact'],

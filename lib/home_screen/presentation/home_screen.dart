@@ -45,61 +45,58 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: WillPopScope(
-        onWillPop: () => showExitPopup(context),
-        child: Scaffold(
-          backgroundColor: Colors.white,
-          body: SizedBox.expand(
-            child: PageView(
-              controller: _pageController,
-              onPageChanged: (index) {
-                if (mounted) {
-                  setState(() {
-                    _selectedIndex = index;
-                  });
-                }
-              },
-              children: const [
-                FoodScreen(),
-                ClothScreen(),
-              ],
-            ),
-          ),
-
-          // BottomNavBar
-          bottomNavigationBar: BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            // backgroundColor: Colors.black.withOpacity(0.2),
-            currentIndex: _selectedIndex,
-            showSelectedLabels: true,
-            showUnselectedLabels: true,
-            selectedIconTheme: IconThemeData(color: kPrimaryColor),
-            unselectedIconTheme: IconThemeData(color: Colors.grey),
-            
-            selectedItemColor: kPrimaryColor,
-            unselectedItemColor: Colors.black,
-            elevation: 0,
-            items: [
-              BottomNavigationBarItem(
-                label: "Food",
-                icon: Image.asset(
-                  'assets/images/food.png',
-                  height: 32,
-                  width: 32,
-                ),
-              ),
-              BottomNavigationBarItem(
-                label: "Cloth",
-                icon: Image.asset(
-                  'assets/images/cloth.png',
-                  height: 32,
-                  width: 32,
-                ),
-              ),
+    return WillPopScope(
+      onWillPop: () => showExitPopup(context),
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: SizedBox.expand(
+          child: PageView(
+            controller: _pageController,
+            onPageChanged: (index) {
+              if (mounted) {
+                setState(() {
+                  _selectedIndex = index;
+                });
+              }
+            },
+            children: const [
+              FoodScreen(),
+              ClothScreen(),
             ],
-            onTap: (index) => _onTap(index),
           ),
+        ),
+
+        // BottomNavBar
+        bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          // backgroundColor: Colors.black.withOpacity(0.2),
+          currentIndex: _selectedIndex,
+          showSelectedLabels: true,
+          showUnselectedLabels: true,
+          selectedIconTheme: IconThemeData(color: kPrimaryColor),
+          unselectedIconTheme: const IconThemeData(color: Colors.grey),
+          backgroundColor: Colors.white,
+
+          selectedItemColor: kPrimaryColor,
+          unselectedItemColor: Colors.black,
+          elevation: 4,
+          items: const [
+            BottomNavigationBarItem(
+              label: "Food",
+              icon: ImageIcon(
+                AssetImage("assets/images/food.png"),
+                size: 32,
+              ),
+            ),
+            BottomNavigationBarItem(
+              label: "Clothes",
+              icon: ImageIcon(
+                AssetImage("assets/images/cloth.png"),
+                size: 32,
+              ),
+            ),
+          ],
+          onTap: (index) => _onTap(index),
         ),
       ),
     );

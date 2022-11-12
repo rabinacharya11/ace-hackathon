@@ -36,7 +36,8 @@ class ShowDialog {
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text('User Register Success ', style: TextStyle(fontWeight: FontWeight.w400)),
+          title: const Text('User Register Success ',
+              style: TextStyle(fontWeight: FontWeight.w400)),
           content: SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
@@ -51,7 +52,11 @@ class ShowDialog {
               onPressed: () {
                 Navigator.of(context).pop();
 
-                Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: ((context) => const Login())), (route) => false);
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                        builder: ((context) => const LoginScreen())),
+                    (route) => false);
               },
             ),
           ],
@@ -66,7 +71,9 @@ class ShowDialog {
       // barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
         return AlertDialog(
-          title: const Text("Warning", style: TextStyle(fontWeight: FontWeight.w400, color: Colors.yellow)),
+          title: const Text("Warning",
+              style:
+                  TextStyle(fontWeight: FontWeight.w400, color: Colors.yellow)),
           content: SingleChildScrollView(
             child: ListBody(
               children: const <Widget>[

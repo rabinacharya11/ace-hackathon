@@ -80,7 +80,10 @@ class _CreateUserState extends State<CreateUser> {
                   children: [
                     const Text(
                       "CREATE ACCOUNT",
-                      style: TextStyle(fontSize: 23, fontWeight: FontWeight.w400, color: Colors.black),
+                      style: TextStyle(
+                          fontSize: 23,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.black),
                     ),
                     const Divider(),
                     const SizedBox(height: 20),
@@ -97,13 +100,19 @@ class _CreateUserState extends State<CreateUser> {
                     signIn(context, email, password, formkeys),
                     const SizedBox(height: 18),
                     const SizedBox(height: 15),
-                    const Text("---------------------- OR ------------------------"),
+                    const Text(
+                        "---------------------- OR ------------------------"),
                     const SizedBox(height: 10),
                     ElevatedButton(
                         onPressed: () {
-                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => const Login()));
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (BuildContext context) =>
+                                      const LoginScreen()));
                         },
-                        child: const Text("Already have an account ? Login", style: TextStyle(fontWeight: FontWeight.w300)))
+                        child: const Text("Already have an account ? Login",
+                            style: TextStyle(fontWeight: FontWeight.w300)))
                   ],
                 ),
               ),
@@ -167,7 +176,9 @@ class _CreateUserState extends State<CreateUser> {
       // autofocus: false,
       keyboardType: TextInputType.emailAddress,
       validator: (value) {
-        if (value!.isEmpty || !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value)) {
+        if (value!.isEmpty ||
+            !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                .hasMatch(value)) {
           email_validator = false;
           return 'Enter a valid email!';
         }
@@ -245,7 +256,8 @@ class _CreateUserState extends State<CreateUser> {
     );
   }
 
-  SizedBox signIn(context, TextEditingController email, TextEditingController password, GlobalKey<FormState> formkey) {
+  SizedBox signIn(context, TextEditingController email,
+      TextEditingController password, GlobalKey<FormState> formkey) {
     return SizedBox(
       width: MediaQuery.of(context).size.width - 100,
       child: ElevatedButton(

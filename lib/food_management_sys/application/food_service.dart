@@ -5,6 +5,7 @@ import 'package:flutter/services.dart' as rootBundle;
 class FoodService {}
 
 class FoodModel {
+  int? id;
   String? imageLink;
   int? contact;
   int? price;
@@ -12,9 +13,17 @@ class FoodModel {
   String? descrption;
   String? address;
 
-  FoodModel({this.imageLink, this.contact, this.price, this.title, this.descrption, this.address});
+  FoodModel(
+      {this.id,
+      this.imageLink,
+      this.contact,
+      this.price,
+      this.title,
+      this.descrption,
+      this.address});
 
   FoodModel.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
     imageLink = json['image_link'];
     contact = json['contact'];
     price = json['price'];
@@ -25,6 +34,7 @@ class FoodModel {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
     data['image_link'] = imageLink;
     data['contact'] = contact;
     data['price'] = price;
@@ -37,7 +47,8 @@ class FoodModel {
 
 Future<List<FoodModel>> ReadJsonData() async {
   //read json file
-  final jsondata = await rootBundle.rootBundle.loadString("lib/food_management_sys/domain/food_data.json");
+  final jsondata = await rootBundle.rootBundle
+      .loadString("lib/food_management_sys/domain/food_data.json");
   //decode json data as list
   final list = json.decode(jsondata) as List<dynamic>;
 

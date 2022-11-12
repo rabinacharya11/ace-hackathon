@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:waste_manage_sys/add_items_screen/add_items.dart';
 import 'package:waste_manage_sys/authentication/presentation/login.dart';
 import 'package:waste_manage_sys/authentication/presentation/register.dart';
-import 'package:waste_manage_sys/food_management_sys/presentation/foodedetail.dart';
+import 'package:waste_manage_sys/food_management_sys/presentation/food_detail.dart';
 import 'package:waste_manage_sys/deliver_screen/presentation/deliver_screen.dart';
 
 import 'package:waste_manage_sys/home_screen/presentation/home_screen.dart';
@@ -27,8 +27,8 @@ Route routes(RouteSettings settings) {
     case RouteConstant.clothDetail:
       final args = arguments as Map<String, dynamic>?;
       return FadeInRoute(page: ViewCloth(cloth: args!["cloth"]));
-    case RouteConstant.login:
-      return FadeInRoute(page: Login());
+    case RouteConstant.loginScreen:
+      return FadeInRoute(page: const LoginScreen());
     case RouteConstant.createuser:
       return FadeInRoute(page: const CreateUser());
     case RouteConstant.foodDetail:

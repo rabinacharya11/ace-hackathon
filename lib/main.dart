@@ -52,9 +52,10 @@ class MyApp extends StatelessWidget {
         //   create: (context) => AuthProvider(),
         // ),
       ],
-      child: const MaterialApp(
+      child: MaterialApp(
         title: 'Waste Management App',
         debugShowCheckedModeBanner: false,
+        theme: ThemeData(primaryColor: kPrimaryColor),
         onGenerateRoute: routes,
         initialRoute: '/',
       ),
