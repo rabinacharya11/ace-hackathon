@@ -45,7 +45,7 @@ class FoodModel {
   }
 }
 
-Future<List<FoodModel>> ReadJsonData() async {
+Future<List<FoodModel>> readJsonData() async {
   //read json file
   final jsondata = await rootBundle.rootBundle
       .loadString("lib/food_management_sys/domain/food_data.json");

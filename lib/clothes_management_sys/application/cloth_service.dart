@@ -7,6 +7,7 @@ class ClothService {}
 class ClothModel {
   int? id;
   String? imageLink;
+  String? address;
   int? contact;
   int? price;
   String? title;
@@ -16,6 +17,7 @@ class ClothModel {
       {this.id,
       this.imageLink,
       this.contact,
+      this.address,
       this.price,
       this.title,
       this.descrption});
@@ -24,6 +26,7 @@ class ClothModel {
     id = json['id'];
     imageLink = json['image_link'];
     contact = json['contact'];
+    address = json['address'];
     price = json['price'];
     title = json['title'];
     descrption = json['descrption'];
@@ -34,6 +37,7 @@ class ClothModel {
     data['id'] = id;
     data['image_link'] = imageLink;
     data['contact'] = contact;
+    data['address'] = address;
     data['price'] = price;
     data['title'] = title;
     data['descrption'] = descrption;
@@ -41,7 +45,7 @@ class ClothModel {
   }
 }
 
-Future<List<ClothModel>> ReadJsonData() async {
+Future<List<ClothModel>> readJsonData() async {
   //read json file
   final jsondata = await rootBundle.rootBundle
       .loadString("lib/clothes_management_sys/domain/cloth_data.json");

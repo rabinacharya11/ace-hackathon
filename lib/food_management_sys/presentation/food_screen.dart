@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:waste_manage_sys/food_management_sys/application/food_service.dart';
+import 'package:provider/provider.dart';
+import 'package:waste_manage_sys/food_management_sys/application/food_provider.dart';
 import 'package:waste_manage_sys/routes/routes_constant.dart';
 import 'package:waste_manage_sys/sidemenu/sidemenu.dart';
 import 'package:waste_manage_sys/theme/theme_data.dart';
@@ -18,118 +19,89 @@ class _FoodScreenState extends State<FoodScreen> {
     return Scaffold(
       drawer: const SideMenu(),
       appBar: appBar(title: "Food"),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () =>
-      //       Navigator.of(context).pushNamed(RouteConstant.addItems),
-      //   backgroundColor: Colors.deepOrange,
-      //   child: const Icon(Icons.add),
-      // ),
       body: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(
-                height: MediaQuery.of(context).size.height, child: fetchData()),
-          ],
+        child: Consumer<FoodPageProvider>(
+          builder: ((context, provider, child) {
+            if (provider.fms.isEmpty) {
+              return const Center(child: CircularProgressIndicator());
+            } else {
+              return gridView();
+            }
+          }),
         ),
       ),
     );
   }
 
-  FutureBuilder<List<FoodModel>> fetchData() {
-    return FutureBuilder(
-        future: ReadJsonData(),
-        builder: (context, data) {
-          if (data.hasError) {
-            //in case if error found
-            return Center(child: Text("${data.error}"));
-          } else if (data.hasData) {
-            var items = data.data as List<FoodModel>;
-            return ListView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                shrinkWrap: true, // calling the neverscrollable functio here
-                scrollDirection: Axis.vertical,
-                // ignore: unnecessary_null_comparison
-                itemCount: items == null ? 0 : items.length,
-                itemBuilder: (context, index) {
-                  return SizedBox(
-                      height: MediaQuery.of(context).size.height,
-                      child: GridView.builder(
-                        itemCount: items.length,
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2, childAspectRatio: 0.7),
-                        itemBuilder: (BuildContext c, int i) {
-                          return GestureDetector(
-                            onTap: () {
-                              Navigator.pushNamed(
-                                  context, RouteConstant.foodDetail,
-                                  arguments: {"food": items[i]});
-                            },
-                            child: Card(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15.0),
-                              ),
-                              shadowColor: Colors.black,
-                              elevation: 1,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Center(
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: SizedBox(
-                                        height: 150,
-                                        child: Image.network(
-                                          items[i].imageLink!,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        const SizedBox(width: 10),
-                                        Text("${items[i].title}",
-                                            overflow: TextOverflow.ellipsis,
-                                            style: const TextStyle(
-                                                fontSize: 16,
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.w400)),
-                                        const SizedBox(width: 10),
-                                        const SizedBox(width: 10, height: 5),
-                                        Text(
-                                            "Contact Info. ${items[i].contact}",
-                                            style: const TextStyle(
-                                                fontSize: 14,
-                                                overflow: TextOverflow.ellipsis,
-                                                color: Colors.black54,
-                                                fontWeight: FontWeight.w500)),
-                                        const SizedBox(height: 5),
-                                        Text("Rs. ${items[i].price.toString()}",
-                                            style: TextStyle(
-                                                fontSize: 18,
-                                                color: kPrimaryColor,
-                                                fontWeight: FontWeight.w500)),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          );
-                        },
-                      ));
-                });
-          } else {
-            // show circular progress while data is getting fetched from json file
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-        });
+  Widget gridView() {
+    final fms = context.watch<FoodPageProvider>().fms;
+    return GridView.builder(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      itemCount: fms.length,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        childAspectRatio: 0.7,
+      ),
+      itemBuilder: (BuildContext c, int i) {
+        return GestureDetector(
+          onTap: () {
+            Navigator.pushNamed(context, RouteConstant.foodDetail,
+                arguments: {"food": fms[i]});
+          },
+          child: Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15),
+            ),
+            shadowColor: Colors.black,
+            elevation: 1,
+            child: Column(
+              children: [
+                Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SizedBox(
+                      height: 165,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(5),
+                        child: Image.network(
+                          fms[i].imageLink!,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const SizedBox(width: 10),
+                    Text("${fms[i].title}",
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                            fontSize: 16,
+                            color: Colors.black,
+                            fontWeight: FontWeight.w400)),
+                    const SizedBox(height: 5),
+                    Text("${fms[i].address}",
+                        style: const TextStyle(
+                            fontSize: 14,
+                            overflow: TextOverflow.ellipsis,
+                            color: Colors.black54,
+                            fontWeight: FontWeight.w500)),
+                    const SizedBox(height: 5),
+                    Text("Rs. ${fms[i].price.toString()}",
+                        style: TextStyle(
+                            fontSize: 18,
+                            color: kPrimaryColor,
+                            fontWeight: FontWeight.w500)),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
   }
 }
