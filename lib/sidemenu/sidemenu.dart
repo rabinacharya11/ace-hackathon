@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:waste_manage_sys/theme/theme_data.dart';
 import 'package:waste_manage_sys/theme/uiparameters.dart';
 
 class SideMenu extends StatefulWidget {
@@ -39,25 +40,10 @@ class _SideMenuState extends State<SideMenu> {
         children: [
           listTile(
               context: context,
-              icon: Icons.home,
-              text: "Home",
-              onClick: () {
-                Navigator.pop(context);
-                Navigator.of(context).pushNamed('/cvt');
-              }),
-          listTile(
-              context: context,
-              icon: Icons.person,
-              text: "Profile",
-              onClick: () {
-                Navigator.pop(context);
-              }),
-
-          const Divider(thickness: 0.8),
-
-          listTile(
-              context: context,
-              icon: Icons.edit_note,
+              img: const ImageIcon(
+                AssetImage("assets/images/food.png"),
+                size: 28,
+              ),
               text: "Clothes",
               onClick: () {
                 Navigator.pop(context);
@@ -66,7 +52,10 @@ class _SideMenuState extends State<SideMenu> {
 
           listTile(
               context: context,
-              icon: Icons.fact_check_outlined,
+              img: const ImageIcon(
+                AssetImage("assets/images/cloth.png"),
+                size: 28,
+              ),
               text: "Food",
               onClick: () {
                 Navigator.pop(context);
@@ -77,17 +66,46 @@ class _SideMenuState extends State<SideMenu> {
 
           listTile(
               context: context,
-              icon: Icons.settings_outlined,
-              text: "Settings",
+              icon: Icons.notes,
+              text: "Terms and Conditions",
               onClick: () {
                 Navigator.pop(context);
-                Navigator.of(context).pushNamed('/settings');
+                Navigator.of(context).pushNamed('/lps');
               }),
+
+          listTile(
+              context: context,
+              icon: Icons.bookmark_rounded,
+              text: "Open Source Licenses",
+              onClick: () {
+                Navigator.pop(context);
+                Navigator.of(context).pushNamed('/lps');
+              }),
+
+          listTile(
+              context: context,
+              icon: Icons.privacy_tip_rounded,
+              text: "Privacy Policy",
+              onClick: () {
+                Navigator.pop(context);
+                Navigator.of(context).pushNamed('/of');
+              }),
+
+          listTile(
+              context: context,
+              icon: Icons.lock_rounded,
+              text: "Disclaimer",
+              onClick: () {
+                Navigator.pop(context);
+                Navigator.of(context).pushNamed('/lps');
+              }),
+
+          const Divider(thickness: 0.8),
 
           // Share App
           listTile(
             context: context,
-            icon: Icons.share_outlined,
+            icon: Icons.share_rounded,
             text: "Share",
             onClick: () async {
               Navigator.pop(context);
@@ -99,7 +117,7 @@ class _SideMenuState extends State<SideMenu> {
           // Rate Us
           listTile(
             context: context,
-            icon: Icons.star_border_outlined,
+            icon: Icons.star_rate_rounded,
             text: "Rate Us",
             onClick: () async {
               Navigator.pop(context);
@@ -110,7 +128,7 @@ class _SideMenuState extends State<SideMenu> {
           // Exit
           listTile(
             context: context,
-            icon: Icons.exit_to_app,
+            icon: Icons.exit_to_app_rounded,
             text: "Log Out",
             onClick: () async {
               Navigator.pop(context);
@@ -128,26 +146,22 @@ class _SideMenuState extends State<SideMenu> {
       children: [
         DrawerHeader(
           margin: null,
-          padding: const EdgeInsets.only(left: 10),
-          decoration: const BoxDecoration(
-              // gradient: appBarGradient(context),
-              color: Colors.black26),
+          padding: const EdgeInsets.only(left: 15, top: 10),
+          decoration: BoxDecoration(color: kPrimaryColor),
           child: Align(
             alignment: Alignment.bottomLeft,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                // Image.asset("assets/images/logo_circular.png", height: 90, width: 90),
-                Icon(Icons.add),
-                SizedBox(height: 20),
-                Center(
-                  child: Text(
-                    "Jadu",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 21,
-                      fontWeight: FontWeight.bold,
-                    ),
+              children: [
+                Image.asset("assets/images/logo_circular.png",
+                    height: 90, width: 90),
+                const SizedBox(height: 20),
+                const Text(
+                  " FoodRobe",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 21,
+                    fontWeight: FontWeight.bold,
                   ),
                 )
               ],
@@ -174,6 +188,7 @@ class _SideMenuState extends State<SideMenu> {
 ListTile listTile(
     {required BuildContext context,
     IconData? icon,
+    Widget? img,
     required String text,
     required Function()? onClick}) {
   return ListTile(
@@ -185,7 +200,7 @@ ListTile listTile(
               icon,
               color: Theme.of(context).textTheme.headline2!.color,
             )
-          : null,
+          : img,
       title: Text(text, style: const TextStyle(fontSize: 15)),
       onTap: onClick);
 }

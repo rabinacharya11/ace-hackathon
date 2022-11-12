@@ -191,9 +191,9 @@ class DeliverScreen extends StatelessWidget {
                   const SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
-                      Text('subtotal (include VAT, SD)'),
-                      Text('Rs. 420'),
+                    children: [
+                      const Text('subtotal (include VAT, SD)'),
+                      Text('Rs. ${data.price}'),
                     ],
                   ),
                   const SizedBox(height: 10),
@@ -209,9 +209,9 @@ class DeliverScreen extends StatelessWidget {
                   const SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
-                      Text('Total Bill'),
-                      Text('Rs. 480'),
+                    children: [
+                      const Text('Total Bill'),
+                      Text('Rs. ${data.price + 60}'),
                     ],
                   ),
                 ],
