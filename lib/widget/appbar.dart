@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-AppBar appBar({ required String title}) {
+AppBar appBar({required String title}) {
   return AppBar(
     iconTheme: const IconThemeData(color: Colors.black),
     title: Text(title, style: const TextStyle(color: Colors.black)),

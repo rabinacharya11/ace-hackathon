@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:waste_manage_sys/dialogs/exit_dialog.dart';
 
 import 'package:waste_manage_sys/food_management_sys/presentation/food_screen.dart';
+import 'package:waste_manage_sys/theme/theme_data.dart';
 
 import '../../clothes_management_sys/presentation/cloth_screen.dart';
 
@@ -48,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child: WillPopScope(
         onWillPop: () => showExitPopup(context),
         child: Scaffold(
-          // extendBody: true,
+          backgroundColor: Colors.white,
           body: SizedBox.expand(
             child: PageView(
               controller: _pageController,
@@ -73,7 +74,10 @@ class _HomeScreenState extends State<HomeScreen> {
             currentIndex: _selectedIndex,
             showSelectedLabels: true,
             showUnselectedLabels: true,
-            selectedItemColor: Colors.black87,
+            selectedIconTheme: IconThemeData(color: kPrimaryColor),
+            unselectedIconTheme: IconThemeData(color: Colors.grey),
+            
+            selectedItemColor: kPrimaryColor,
             unselectedItemColor: Colors.black,
             elevation: 0,
             items: [

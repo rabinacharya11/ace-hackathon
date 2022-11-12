@@ -12,14 +12,15 @@ class ViewCloth extends StatelessWidget {
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-            backgroundColor: Colors.white,
-            elevation: 0.5,
-            iconTheme: const IconThemeData(color: Colors.black),
-            titleTextStyle: const TextStyle(
-                color: Colors.black,
-                fontSize: 20,
-                overflow: TextOverflow.ellipsis),
-            title: Text(cloth.title!)),
+          backgroundColor: Colors.white,
+          elevation: 0.5,
+          iconTheme: const IconThemeData(color: Colors.black),
+          titleTextStyle: const TextStyle(
+              color: Colors.black,
+              fontSize: 20,
+              overflow: TextOverflow.ellipsis),
+          title: Text(cloth.title!),
+        ),
         body: SingleChildScrollView(
           child: Column(
             children: [

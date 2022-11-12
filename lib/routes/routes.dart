@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:waste_manage_sys/add_items_screen/add_items.dart';
 import 'package:waste_manage_sys/food_management_sys/presentation/foodedetail.dart';
 import 'package:waste_manage_sys/deliver_screen/presentation/deliver_screen.dart';
 
@@ -16,6 +17,8 @@ Route routes(RouteSettings settings) {
       return FadeInRoute(page: const SplashScreen());
     case RouteConstant.homeScreen:
       return FadeInRoute(page: const HomeScreen());
+    case RouteConstant.addItems:
+      return FadeInRoute(page: const AddItemsScreen());
     case RouteConstant.deliverScreen:
       final args = arguments as Map<String, dynamic>?;
       return FadeInRoute(page: DeliverScreen(data: args!["data"]));
