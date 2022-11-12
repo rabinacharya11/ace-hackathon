@@ -12,14 +12,18 @@ class DeliverScreen extends StatelessWidget {
 
   final String _deliverAddress =
       'Ace Institue of Management, New Baneshwor, KTM';
-  final String _pickupAddress = 'Sandar Momo, Gothaghar, Bhaktapur';
-  final String _sellerImgUrl =
-      'https://the-corporate.com/public/profile_images/72100-1618913819.jpg';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(title: "Deliver Screen"),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0.5,
+        iconTheme: const IconThemeData(color: Colors.black),
+        titleTextStyle: const TextStyle(
+            color: Colors.black, fontSize: 20, overflow: TextOverflow.ellipsis),
+        title: const Text('Deliver Screen'),
+      ),
       backgroundColor: Colors.grey[200],
       body: SingleChildScrollView(
         child: Column(
@@ -42,7 +46,10 @@ class DeliverScreen extends StatelessWidget {
                       ),
                       const Spacer(),
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.of(context)
+                              .pushNamed(RouteConstant.editAddressScreen);
+                        },
                         child: Row(
                           children: const [
                             Text(
@@ -129,7 +136,7 @@ class DeliverScreen extends StatelessWidget {
                       const Text(
                         'Order',
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 16),
+                            fontWeight: FontWeight.bold, fontSize: 17),
                       ),
                       const SizedBox(height: 5),
                       Card(
@@ -147,8 +154,16 @@ class DeliverScreen extends StatelessWidget {
                                     maxLines: 2,
                                     overflow: TextOverflow.ellipsis,
                                     style: const TextStyle(
-                                        fontSize: 17,
-                                        fontWeight: FontWeight.bold),
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 10),
+                                  Text(
+                                    "Size : ${data.size}",
+                                    style: const TextStyle(
+                                      fontSize: 16,
+                                    ),
                                   ),
                                   const SizedBox(height: 10),
                                   Text(
@@ -186,22 +201,36 @@ class DeliverScreen extends StatelessWidget {
                 children: [
                   const Text(
                     'Receipt',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
                   ),
                   const SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text('subtotal (include VAT, SD)'),
-                      Text('Rs. ${data.price}'),
+                      const Text(
+                        'subtotal (include VAT, SD)',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w500, fontSize: 16),
+                      ),
+                      Text(
+                        'Rs. ${data.price}',
+                        style: const TextStyle(fontSize: 16),
+                      ),
                     ],
                   ),
                   const SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: const [
-                      Text('Delivery fee'),
-                      Text('Rs. 60'),
+                      Text(
+                        'Delivery fee',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w500, fontSize: 16),
+                      ),
+                      Text(
+                        'Rs. 60',
+                        style: TextStyle(fontSize: 16),
+                      ),
                     ],
                   ),
                   const SizedBox(height: 10),
@@ -210,8 +239,17 @@ class DeliverScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Text('Total Bill'),
-                      Text('Rs. ${data.price + 60}'),
+                      const Text(
+                        'Total Bill',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16,
+                        ),
+                      ),
+                      Text(
+                        'Rs. ${data.price + 60}',
+                        style: const TextStyle(fontSize: 16),
+                      ),
                     ],
                   ),
                 ],
@@ -224,6 +262,7 @@ class DeliverScreen extends StatelessWidget {
               padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
               margin: const EdgeInsets.only(bottom: 8),
               width: double.infinity,
+              height: 60,
               child: ElevatedButton(
                 onPressed: () async {
                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
@@ -231,8 +270,9 @@ class DeliverScreen extends StatelessWidget {
                     duration: Duration(milliseconds: 1500),
                   ));
                   await Future.delayed(const Duration(milliseconds: 2500));
-                  Navigator.of(context)
-                      .pushReplacementNamed(RouteConstant.homeScreen);
+                  Navigator.of(context).pushNamedAndRemoveUntil(
+                      RouteConstant.orderScreen,
+                      (Route<dynamic> route) => false);
                 },
                 style: ElevatedButton.styleFrom(backgroundColor: kPrimaryColor),
                 child: const Text(

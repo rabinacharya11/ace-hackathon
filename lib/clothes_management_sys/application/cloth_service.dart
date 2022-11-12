@@ -6,6 +6,7 @@ class ClothService {}
 
 class ClothModel {
   int? id;
+  String? size;
   String? imageLink;
   String? address;
   int? contact;
@@ -15,6 +16,7 @@ class ClothModel {
 
   ClothModel(
       {this.id,
+      this.size,
       this.imageLink,
       this.contact,
       this.address,
@@ -24,6 +26,7 @@ class ClothModel {
 
   ClothModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
+    size = json['size'];
     imageLink = json['image_link'];
     contact = json['contact'];
     address = json['address'];
@@ -35,6 +38,7 @@ class ClothModel {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
+    data['size'] = size;
     data['image_link'] = imageLink;
     data['contact'] = contact;
     data['address'] = address;

@@ -44,7 +44,7 @@ class ViewFood extends StatelessWidget {
                     children: [
                       Text(food.title!,
                           style: const TextStyle(
-                              fontSize: 22, fontWeight: FontWeight.w500)),
+                              fontSize: 20, fontWeight: FontWeight.bold)),
                       const SizedBox(height: 10),
                       Text("Rs. ${food.price.toString()}",
                           style: const TextStyle(
@@ -63,7 +63,7 @@ class ViewFood extends StatelessWidget {
                   children: [
                     const Text("Product Description",
                         style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.w500)),
+                            fontSize: 18, fontWeight: FontWeight.w500)),
                     const SizedBox(height: 10),
                     Text(food.descrption!,
                         style: const TextStyle(
@@ -76,6 +76,7 @@ class ViewFood extends StatelessWidget {
                 color: Colors.grey[50],
                 padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
                 margin: const EdgeInsets.only(bottom: 8),
+                height: 60,
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () => Navigator.of(context).pushNamed(

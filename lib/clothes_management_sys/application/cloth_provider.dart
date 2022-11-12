@@ -13,4 +13,9 @@ class ClothPageProvider extends ChangeNotifier {
     _cms = await readJsonData();
     notifyListeners();
   }
+
+  updateCMS(ClothModel cm) {
+    _cms.add(cm);
+    notifyListeners();
+  }
 }

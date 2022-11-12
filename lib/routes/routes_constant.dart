@@ -7,4 +7,6 @@ class RouteConstant {
   static const addItems = '/addItems';
   static const loginScreen = '/login';
   static const createuser = '/register';
+  static const orderScreen = '/orderScreen';
+  static const editAddressScreen = '/editAddressScreen';
 }
