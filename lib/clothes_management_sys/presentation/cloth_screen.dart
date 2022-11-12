@@ -46,8 +46,7 @@ class _ClothScreenState extends State<ClothScreen> {
       itemBuilder: (BuildContext c, int i) {
         return GestureDetector(
           onTap: () {
-            Navigator.pushNamed(context, RouteConstant.foodDetail,
-                arguments: {"food": cms[i]});
+            Navigator.pushNamed(context, RouteConstant.clothDetail, arguments: {"cloth": cms[i]});
           },
           child: Card(
             shape: RoundedRectangleBorder(
@@ -77,24 +76,12 @@ class _ClothScreenState extends State<ClothScreen> {
                   children: [
                     const SizedBox(width: 10),
                     Text("${cms[i].title}",
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(
-                            fontSize: 16,
-                            color: Colors.black,
-                            fontWeight: FontWeight.w400)),
+                        overflow: TextOverflow.ellipsis, style: const TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w400)),
                     const SizedBox(height: 5),
                     Text("${cms[i].address}",
-                        style: const TextStyle(
-                            fontSize: 14,
-                            overflow: TextOverflow.ellipsis,
-                            color: Colors.black54,
-                            fontWeight: FontWeight.w500)),
+                        style: const TextStyle(fontSize: 14, overflow: TextOverflow.ellipsis, color: Colors.black54, fontWeight: FontWeight.w500)),
                     const SizedBox(height: 5),
-                    Text("Rs. ${cms[i].price.toString()}",
-                        style: TextStyle(
-                            fontSize: 18,
-                            color: kPrimaryColor,
-                            fontWeight: FontWeight.w500)),
+                    Text("Rs. ${cms[i].price.toString()}", style: TextStyle(fontSize: 18, color: kPrimaryColor, fontWeight: FontWeight.w500)),
                   ],
                 ),
               ],

@@ -28,7 +28,7 @@ class _CreateUserState extends State<CreateUser> {
   bool pass_validator = false;
   bool username_validator = false;
   bool profession_validator = false;
-
+  bool agree = false;
   late bool createId;
 
   final formkeys = GlobalKey<FormState>();
@@ -55,7 +55,7 @@ class _CreateUserState extends State<CreateUser> {
                   clipper: WaveClipper(),
                   child: Container(
                     padding: const EdgeInsets.only(bottom: 450),
-                    color: Colors.blue.withOpacity(.8),
+                    color: Colors.deepOrange.withOpacity(.8),
                     height: 220,
                     alignment: Alignment.center,
                   ),
@@ -64,7 +64,7 @@ class _CreateUserState extends State<CreateUser> {
                   clipper: WaveClipper(waveDeep: 0, waveDeep2: 100),
                   child: Container(
                     padding: const EdgeInsets.only(bottom: 50),
-                    color: Colors.blue.withOpacity(.3),
+                    color: Colors.deepOrange.withOpacity(.3),
                     height: 180,
                     alignment: Alignment.center,
                   ),
@@ -80,39 +80,52 @@ class _CreateUserState extends State<CreateUser> {
                   children: [
                     const Text(
                       "CREATE ACCOUNT",
-                      style: TextStyle(
-                          fontSize: 23,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.black),
+                      style: TextStyle(fontSize: 23, fontWeight: FontWeight.w400, color: Colors.black),
                     ),
                     const Divider(),
                     const SizedBox(height: 20),
                     nameText(),
-                    const SizedBox(height: 20),
-                    professionText(),
                     const SizedBox(height: 20),
                     emailText(email),
                     const SizedBox(height: 20),
                     passwordText(password),
                     const SizedBox(height: 20),
                     c_passwordText(password, context),
+                    Row(
+                      children: [
+                        Material(
+                          child: Checkbox(
+                            value: agree,
+                            onChanged: (value) {
+                              setState(() {
+                                agree = value ?? false;
+                              });
+                            },
+                          ),
+                        ),
+                        const Text(
+                          'I have read and accept ',
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        const Text(
+                          'Terms and Conditions',
+                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                          overflow: TextOverflow.ellipsis,
+                        )
+                      ],
+                    ),
                     const SizedBox(height: 30),
                     signIn(context, email, password, formkeys),
                     const SizedBox(height: 18),
                     const SizedBox(height: 15),
-                    const Text(
-                        "---------------------- OR ------------------------"),
+                    const Text("---------------------- OR ------------------------"),
                     const SizedBox(height: 10),
                     ElevatedButton(
+                        style: ElevatedButton.styleFrom(elevation: 0.5, backgroundColor: Colors.deepOrange[500]),
                         onPressed: () {
-                          Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (BuildContext context) =>
-                                      const LoginScreen()));
+                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => const LoginScreen()));
                         },
-                        child: const Text("Already have an account ? Login",
-                            style: TextStyle(fontWeight: FontWeight.w300)))
+                        child: const Text("Already have an account ? Login", style: TextStyle(fontWeight: FontWeight.w300)))
                   ],
                 ),
               ),
@@ -127,7 +140,7 @@ class _CreateUserState extends State<CreateUser> {
     return TextFormField(
       controller: username,
       decoration: const InputDecoration(
-        labelText: "Username",
+        labelText: "Name",
       ),
       textInputAction: TextInputAction.next,
       cursorColor: Colors.black,
@@ -136,7 +149,7 @@ class _CreateUserState extends State<CreateUser> {
       validator: (value) {
         if (value!.isEmpty) {
           username_validator = false;
-          return 'Username is empty !';
+          return 'Name is empty !';
         }
         username_validator = true;
 
@@ -169,23 +182,12 @@ class _CreateUserState extends State<CreateUser> {
     return TextFormField(
       controller: email,
       decoration: const InputDecoration(
-        labelText: "Email",
+        labelText: "Phone No.",
       ),
       textInputAction: TextInputAction.next,
       cursorColor: Colors.black,
       // autofocus: false,
-      keyboardType: TextInputType.emailAddress,
-      validator: (value) {
-        if (value!.isEmpty ||
-            !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                .hasMatch(value)) {
-          email_validator = false;
-          return 'Enter a valid email!';
-        }
-        email_validator = true;
-
-        return null;
-      },
+      keyboardType: TextInputType.number,
     );
   }
 
@@ -256,20 +258,21 @@ class _CreateUserState extends State<CreateUser> {
     );
   }
 
-  SizedBox signIn(context, TextEditingController email,
-      TextEditingController password, GlobalKey<FormState> formkey) {
+  SizedBox signIn(context, TextEditingController email, TextEditingController password, GlobalKey<FormState> formkey) {
     return SizedBox(
       width: MediaQuery.of(context).size.width - 100,
       child: ElevatedButton(
-          style: ElevatedButton.styleFrom(elevation: 0.5),
-          onPressed: () {
-            formkey.currentState!.validate();
-            if (email_validator && pass_validator && username_validator) {
-              createId = true;
-            } else {
-              createId = false;
-            }
-          },
+          style: ElevatedButton.styleFrom(elevation: 0.5, backgroundColor: Colors.deepOrange[500]),
+          onPressed: agree
+              ? () {
+                  formkey.currentState!.validate();
+                  if (email_validator && pass_validator && username_validator) {
+                    createId = true;
+                  } else {
+                    createId = false;
+                  }
+                }
+              : null,
           child: const Padding(
             padding: EdgeInsets.all(10.0),
             child: Text("SIGN IN", style: TextStyle(fontSize: 15)),
