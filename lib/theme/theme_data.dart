@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 Color kStatusBarColor = Colors.transparent;
-Color kPrimaryColor = const Color(0xFF383f52);
+Color kPrimaryColor = Colors.orange;
 
 // class MyThemes {
 //   //-------------light THEME SETTINGS---------------//

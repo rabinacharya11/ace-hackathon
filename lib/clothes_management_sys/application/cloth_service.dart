@@ -4,40 +4,54 @@ import 'package:flutter/services.dart' as rootBundle;
 
 class ClothService {}
 
-class ClothJson {
+class ClothModel {
+  int? id;
   String? imageLink;
-  int? number;
+  String? address;
+  int? contact;
   int? price;
-  String? name;
+  String? title;
   String? descrption;
 
-  ClothJson({this.imageLink, this.number, this.price, this.name, this.descrption});
+  ClothModel(
+      {this.id,
+      this.imageLink,
+      this.contact,
+      this.address,
+      this.price,
+      this.title,
+      this.descrption});
 
-  ClothJson.fromJson(Map<String, dynamic> json) {
-    imageLink = json['imageLink'];
-    number = json['number'];
+  ClothModel.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    imageLink = json['image_link'];
+    contact = json['contact'];
+    address = json['address'];
     price = json['price'];
-    name = json['name'];
+    title = json['title'];
     descrption = json['descrption'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['imageLink'] = imageLink;
-    data['number'] = number;
+    data['id'] = id;
+    data['image_link'] = imageLink;
+    data['contact'] = contact;
+    data['address'] = address;
     data['price'] = price;
-    data['name'] = name;
+    data['title'] = title;
     data['descrption'] = descrption;
     return data;
   }
 }
 
-Future<List<ClothJson>> ReadJsonData() async {
+Future<List<ClothModel>> readJsonData() async {
   //read json file
-  final jsondata = await rootBundle.rootBundle.loadString("lib/clothes_management_sys/domain/data.json");
+  final jsondata = await rootBundle.rootBundle
+      .loadString("lib/clothes_management_sys/domain/cloth_data.json");
   //decode json data as list
   final list = json.decode(jsondata) as List<dynamic>;
 
   //map json and initialize using DataModel
-  return list.map((e) => ClothJson.fromJson(e)).toList();
+  return list.map((e) => ClothModel.fromJson(e)).toList();
 }

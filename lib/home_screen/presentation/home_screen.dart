@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:waste_manage_sys/dialogs/exit_dialog.dart';
-import 'package:waste_manage_sys/clothes_management_sys/presentation/cloth_screen.dart';
+
 import 'package:waste_manage_sys/food_management_sys/presentation/food_screen.dart';
+import 'package:waste_manage_sys/theme/theme_data.dart';
+
+import '../../clothes_management_sys/presentation/cloth_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -42,51 +45,58 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: WillPopScope(
-        onWillPop: () => showExitPopup(context),
-        child: Scaffold(
-          body: SizedBox.expand(
-            child: PageView(
-              controller: _pageController,
-              onPageChanged: (index) {
-                if (mounted) {
-                  setState(() {
-                    _selectedIndex = index;
-                  });
-                }
-              },
-              children: const [
-                FoodScreen(),
-                ClothScreen(),
-              ],
-            ),
-          ),
-
-          // BottomNavBar
-          bottomNavigationBar: BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            backgroundColor: Colors.grey[100],
-            currentIndex: _selectedIndex,
-            selectedItemColor: Colors.black87,
-            unselectedItemColor: Colors.grey.withOpacity(0.9),
-            showSelectedLabels: false,
-            showUnselectedLabels: false,
-            selectedFontSize: 0,
-            unselectedFontSize: 0,
-            elevation: 0,
-            items: const [
-              BottomNavigationBarItem(
-                label: "Food",
-                icon: Icon(Icons.food_bank_rounded),
-              ),
-              BottomNavigationBarItem(
-                label: "Cloth",
-                icon: Icon(Icons.abc),
-              ),
+    return WillPopScope(
+      onWillPop: () => showExitPopup(context),
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: SizedBox.expand(
+          child: PageView(
+            controller: _pageController,
+            onPageChanged: (index) {
+              if (mounted) {
+                setState(() {
+                  _selectedIndex = index;
+                });
+              }
+            },
+            children: const [
+              FoodScreen(),
+              ClothScreen(),
             ],
-            onTap: (index) => _onTap(index),
           ),
+        ),
+
+        // BottomNavBar
+        bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          // backgroundColor: Colors.black.withOpacity(0.2),
+          currentIndex: _selectedIndex,
+          showSelectedLabels: true,
+          showUnselectedLabels: true,
+          selectedIconTheme: IconThemeData(color: kPrimaryColor),
+          unselectedIconTheme: const IconThemeData(color: Colors.grey),
+          backgroundColor: Colors.white,
+
+          selectedItemColor: kPrimaryColor,
+          unselectedItemColor: Colors.black,
+          elevation: 4,
+          items: const [
+            BottomNavigationBarItem(
+              label: "Food",
+              icon: ImageIcon(
+                AssetImage("assets/images/food.png"),
+                size: 32,
+              ),
+            ),
+            BottomNavigationBarItem(
+              label: "Clothes",
+              icon: ImageIcon(
+                AssetImage("assets/images/cloth.png"),
+                size: 32,
+              ),
+            ),
+          ],
+          onTap: (index) => _onTap(index),
         ),
       ),
     );
