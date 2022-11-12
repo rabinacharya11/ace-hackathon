@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:waste_manage_sys/clothes_management_sys/application/cloth_service.dart';
+import 'package:waste_manage_sys/food_management_sys/application/food_service.dart';
 import 'package:waste_manage_sys/routes/routes_constant.dart';
 import 'package:waste_manage_sys/theme/theme_data.dart';
 
-class ViewCloth extends StatelessWidget {
-  final ClothModel cloth;
-  const ViewCloth({super.key, required this.cloth});
+class ViewFood extends StatelessWidget {
+  final FoodModel food;
+  const ViewFood({super.key, required this.food});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class ViewCloth extends StatelessWidget {
               color: Colors.black,
               fontSize: 20,
               overflow: TextOverflow.ellipsis),
-          title: Text(cloth.title!),
+          title: Text(food.title!),
         ),
         body: SingleChildScrollView(
           child: Column(
@@ -31,7 +31,7 @@ class ViewCloth extends StatelessWidget {
                 margin: const EdgeInsets.symmetric(vertical: 8),
                 height: MediaQuery.of(context).size.height / 3.5,
                 width: double.infinity,
-                child: Image.network(cloth.imageLink!),
+                child: Image.network(food.imageLink!),
               ),
 
               Container(
@@ -42,11 +42,11 @@ class ViewCloth extends StatelessWidget {
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(cloth.title!,
+                      Text(food.title!,
                           style: const TextStyle(
                               fontSize: 22, fontWeight: FontWeight.w500)),
                       const SizedBox(height: 10),
-                      Text("Rs. ${cloth.price.toString()}",
+                      Text("Rs. ${food.price.toString()}",
                           style: const TextStyle(
                               fontSize: 18,
                               color: Colors.orange,
@@ -65,7 +65,7 @@ class ViewCloth extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 20, fontWeight: FontWeight.w500)),
                     const SizedBox(height: 10),
-                    Text(cloth.descrption!,
+                    Text(food.descrption!,
                         style: const TextStyle(
                             fontSize: 15, fontWeight: FontWeight.w400)),
                   ],
@@ -80,7 +80,7 @@ class ViewCloth extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () => Navigator.of(context).pushNamed(
                       RouteConstant.deliverScreen,
-                      arguments: {"data": cloth}),
+                      arguments: {"data": food}),
                   style:
                       ElevatedButton.styleFrom(backgroundColor: kPrimaryColor),
                   child: const Text(

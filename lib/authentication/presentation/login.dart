@@ -6,13 +6,13 @@ import 'package:waste_manage_sys/widget/waveclipper.dart';
 final number = TextEditingController();
 final password = TextEditingController();
 
-class Login extends StatelessWidget {
-  const Login({Key? key}) : super(key: key);
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    const String userNumber = "9808901365";
-    const String userPassword = "11111111";
+    const String userNumber = "9840530096";
+    const String userPassword = "Hackathon";
 
     return Scaffold(
         backgroundColor: Colors.white,
@@ -25,7 +25,8 @@ class Login extends StatelessWidget {
         ));
   }
 
-  Widget logInWid(TextEditingController email, TextEditingController password, var context, String userNumber, String userPassword) {
+  Widget logInWid(TextEditingController email, TextEditingController password,
+      var context, String userNumber, String userPassword) {
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -58,7 +59,10 @@ class Login extends StatelessWidget {
               children: [
                 const Text(
                   "SIGN IN",
-                  style: TextStyle(fontSize: 23, fontWeight: FontWeight.w400, color: Colors.black),
+                  style: TextStyle(
+                      fontSize: 23,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.black),
                 ),
                 const Divider(),
                 const SizedBox(height: 20),
@@ -75,14 +79,22 @@ class Login extends StatelessWidget {
                       style: TextStyle(fontWeight: FontWeight.w400),
                     )),
                 const SizedBox(height: 15),
-                const Text("---------------------- OR ------------------------"),
+                const Text(
+                    "---------------------- OR ------------------------"),
                 const SizedBox(height: 10),
                 ElevatedButton(
-                    style: ElevatedButton.styleFrom(elevation: 0.5, backgroundColor: Colors.deepOrange[500]),
+                    style: ElevatedButton.styleFrom(
+                        elevation: 0.5,
+                        backgroundColor: Colors.deepOrange[500]),
                     onPressed: () {
-                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => const CreateUser()));
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) =>
+                                  const CreateUser()));
                     },
-                    child: const Text("Create New Account", style: TextStyle(fontWeight: FontWeight.w300))),
+                    child: const Text("Create New Account",
+                        style: TextStyle(fontWeight: FontWeight.w300))),
               ],
             ),
           ),
@@ -95,7 +107,8 @@ class Login extends StatelessWidget {
     return TextFormField(
       maxLength: 10,
       controller: email,
-      decoration: const InputDecoration(labelText: "Phone No.", counterText: ""),
+      decoration:
+          const InputDecoration(labelText: "Phone No.", counterText: ""),
       textInputAction: TextInputAction.next,
       cursorColor: Colors.black,
       autofocus: false,
@@ -103,11 +116,13 @@ class Login extends StatelessWidget {
     );
   }
 
-  SizedBox loginBtn(context, TextEditingController email, TextEditingController password, String userNumber, String userPassword) {
+  SizedBox loginBtn(context, TextEditingController email,
+      TextEditingController password, String userNumber, String userPassword) {
     return SizedBox(
       width: MediaQuery.of(context).size.width - 100,
       child: ElevatedButton(
-          style: ElevatedButton.styleFrom(elevation: 0.5, backgroundColor: Colors.deepOrange),
+          style: ElevatedButton.styleFrom(
+              elevation: 0.5, backgroundColor: Colors.deepOrange),
           onPressed: () {
             if (email.text == userNumber && password.text == userPassword) {
               Navigator.pushReplacementNamed(context, RouteConstant.homeScreen);

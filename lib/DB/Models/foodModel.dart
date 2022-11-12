@@ -1,4 +1,5 @@
 class Food {
+  final int id;
   final String title;
   final double price;
   final String contactNo;
@@ -7,7 +8,8 @@ class Food {
   final String address;
 
   Food(
-      {required this.title,
+      {required this.id,
+      required this.title,
       required this.price,
       required this.contactNo,
       this.description,
@@ -15,6 +17,7 @@ class Food {
       required this.imgUrl});
 
   factory Food.fromJson(Map<String, dynamic> json) => Food(
+        id: json['id'],
         title: json['title'],
         price: json['price'],
         contactNo: json['contact'],
