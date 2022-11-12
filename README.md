@@ -1,4 +1,7 @@
-# waste_manage_sys
+# FoodRobe : Ace Hackathon Project
+What is the FoodRobe? 
+
+FoodRobe is the marketplace that connects users who are looking for leftover food, vegetables, and fruits at cheaper prices, and second-hand clothes. 
 
 A new Flutter project.
 
