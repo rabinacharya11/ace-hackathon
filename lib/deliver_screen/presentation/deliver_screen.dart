@@ -220,7 +220,10 @@ class DeliverScreen extends StatelessWidget {
 
             // Place Order
             Container(
-              padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
+              color: Colors.grey[50],
+              padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
+              margin: const EdgeInsets.only(bottom: 8),
+              width: double.infinity,
               child: ElevatedButton(
                 onPressed: () async {
                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
@@ -234,7 +237,7 @@ class DeliverScreen extends StatelessWidget {
                 style: ElevatedButton.styleFrom(backgroundColor: kPrimaryColor),
                 child: const Text(
                   'Confirm',
-                  style: TextStyle(fontSize: 15, color: Colors.white),
+                  style: TextStyle(fontSize: 16, color: Colors.white),
                 ),
               ),
             )
