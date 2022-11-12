@@ -24,7 +24,6 @@ class ViewCloth extends StatelessWidget {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              // const SizedBox(height: 20),/ssss
               Container(
                 color: Colors.grey[50],
                 padding: const EdgeInsets.fromLTRB(10, 5, 10, 20),
@@ -33,27 +32,34 @@ class ViewCloth extends StatelessWidget {
                 width: double.infinity,
                 child: Image.network(cloth.imageLink!),
               ),
-
               Container(
                 color: Colors.grey[50],
                 padding: const EdgeInsets.fromLTRB(10, 10, 10, 20),
                 margin: const EdgeInsets.only(bottom: 8),
                 width: double.infinity,
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(cloth.title!,
-                          style: const TextStyle(
-                              fontSize: 22, fontWeight: FontWeight.w500)),
-                      const SizedBox(height: 10),
-                      Text("Rs. ${cloth.price.toString()}",
-                          style: const TextStyle(
-                              fontSize: 18,
-                              color: Colors.orange,
-                              fontWeight: FontWeight.w600)),
-                    ]),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(cloth.title!,
+                            style: const TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold)),
+                        const SizedBox(height: 10),
+                        Text("Rs. ${cloth.price.toString()}",
+                            style: const TextStyle(
+                                fontSize: 18,
+                                color: Colors.orange,
+                                fontWeight: FontWeight.w600)),
+                      ],
+                    ),
+                    Text(cloth.size!,
+                        style: const TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold)),
+                  ],
+                ),
               ),
-
               Container(
                 color: Colors.grey[50],
                 padding: const EdgeInsets.fromLTRB(10, 10, 10, 20),
@@ -63,7 +69,7 @@ class ViewCloth extends StatelessWidget {
                   children: [
                     const Text("Product Description",
                         style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.w500)),
+                            fontSize: 18, fontWeight: FontWeight.w500)),
                     const SizedBox(height: 10),
                     Text(cloth.descrption!,
                         style: const TextStyle(
@@ -71,11 +77,11 @@ class ViewCloth extends StatelessWidget {
                   ],
                 ),
               ),
-
               Container(
                 color: Colors.grey[50],
                 padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
                 margin: const EdgeInsets.only(bottom: 8),
+                height: 60,
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () => Navigator.of(context).pushNamed(

@@ -154,13 +154,27 @@ class _OrderScreenState extends State<OrderScreen> {
                                 ],
                               ),
                               const Spacer(),
-                              Text(
-                                "( $size )",
-                                textAlign: TextAlign.right,
-                                style: const TextStyle(
-                                    fontSize: 17,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold),
+                              Column(
+                                children: [
+                                  SizedBox(
+                                    height: 55,
+                                    child: Text(
+                                      "( $size )",
+                                      textAlign: TextAlign.right,
+                                      style: const TextStyle(
+                                          fontSize: 17,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                  ElevatedButton(
+                                    onPressed: () {},
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.red,
+                                    ),
+                                    child: Text('Cancel'),
+                                  ),
+                                ],
                               ),
                             ],
                           ),
@@ -215,7 +229,7 @@ class _OrderScreenState extends State<OrderScreen> {
               ),
             ),
 
-            // Cancel Order
+            // Back Button
             Container(
               color: Colors.grey[50],
               padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
@@ -223,22 +237,17 @@ class _OrderScreenState extends State<OrderScreen> {
               width: double.infinity,
               height: 60,
               child: ElevatedButton(
-                onPressed: () async {
-                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                    content: Text('Order Confirmed'),
-                    duration: Duration(milliseconds: 1500),
-                  ));
-                  await Future.delayed(const Duration(milliseconds: 2500));
+                onPressed: () {
                   Navigator.of(context)
                       .pushReplacementNamed(RouteConstant.homeScreen);
                 },
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+                style: ElevatedButton.styleFrom(backgroundColor: kPrimaryColor),
                 child: const Text(
-                  'Cancel Order',
+                  'Back',
                   style: TextStyle(fontSize: 16, color: Colors.white),
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),

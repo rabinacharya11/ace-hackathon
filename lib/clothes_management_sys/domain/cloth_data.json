@@ -1,6 +1,7 @@
 [
     {
         "id" : 0,
+        "size" : "XL",        
         "image_link": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuPrVW_Y8YEaXtk_xtqjFyD7MHRa3bBkMiucj9H-oirz1h8ytJya6tm_47J-Hn-LLr950&usqp=CAU",
         "contact": 9800000000,
         "title": "Half Pant",
@@ -10,6 +11,7 @@
     },
     {
         "id" : 1,
+        "size" : "XLL",
         "image_link": "https://cdn.shopify.com/s/files/1/0070/7032/files/tshirt-business8-min_838a2996-f195-4c1d-a4d1-034bc0a9a095.jpg?v=1597402071",
         "contact": 9800000000,
         "title": "Rounded T-shirt",
@@ -19,6 +21,7 @@
     },
     {
         "id" : 2,
+        "size" : "L",
         "image_link": "https://5.imimg.com/data5/QT/HR/MY-37381801/men-s-leather-jacket-500x500.jpg",
         "contact": 9800000000,
         "title": "Black leather jacket",

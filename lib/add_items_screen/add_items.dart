@@ -209,7 +209,10 @@ class _AddItemsScreenState extends State<AddItemsScreen> {
                         ),
                         const Spacer(),
                         InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.of(context)
+                                .pushNamed(RouteConstant.editAddressScreen);
+                          },
                           child: Row(
                             children: const [
                               Text(
